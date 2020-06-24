@@ -30,7 +30,7 @@ public class MainController {
 	public String ejemplo() {
 		
 	
-		return "esto es un ejemplo";
+		return "<h1>esto es un <a href=\"#\">ejemplo</a></h1>";
 	}
 
 }

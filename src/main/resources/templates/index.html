@@ -1,5 +1,122 @@
 <html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<script>
+	$(document).ready(function(){
+		
+		  //METODO GET
+	  $("#ver").click(function(){
+		var matricula = $('input:text[name=matricula]').val();
+		if(matricula == ""){
+			alert("Debes capturar la matricula");
+		}else{
+			$.get("http://localhost:8080/alumnos/"+matricula, datosAlumno);
+		}
+	  });
+		   
+	  function datosAlumno(alum){
+	    $("#contenido").append($("<p>MATRICULA: '"+alum.matricula+"'  NOMBRE: '"+alum.nombre+"'  CARRERA: '"+alum.carrera+"'</p>"));
+	  }
+		  
+		  //METODO POST
+	  $("#cargar").click(function(){
+		  
+		  var mat = document.getElementById("matricula");
+		  var nom = document.getElementById("nombre");
+		  var carr = document.getElementById("carrera");
+		  
+		  if(mat.value == "" || nom.value == "" || carr.value == ""){
+			  alert("Debes registrar todos los campos");
+		  }else{
+			  var settings = {
+					  "url": "http://localhost:8080/alumnos",
+					  "method": "POST",
+					  "timeout": 0,
+					  "headers": {
+					    "Content-Type": "application/json"
+					  },
+					  "data": JSON.stringify({"matricula":""+mat.value+"","nombre":""+nom.value+"","carrera":""+carr.value+""}),
+					};
+	
+					$.ajax(settings).done(function (response) {
+						  console.log(response);
+						  alert("Se agrego exitosamente el alumno");
+					});
+					
+					
+		  }
+	  });
+		  
+		  //METODO PUT
+	  $("#actualizar").click(function(){
+		  
+		  var mat = document.getElementById("matricula");
+		  var nom = document.getElementById("nombre");
+		  var carr = document.getElementById("carrera");
+		  
+		  if(mat.value == "" || nom.value == "" || carr.value == ""){
+			  alert("Debes registrar todos los campos");
+		  }else{
+			  var settings = {
+					  "url": "http://localhost:8080/alumno/"+mat.value,
+					  "method": "PUT",
+					  "timeout": 0,
+					  "headers": {
+					    "Content-Type": "application/json"
+					  },
+					  "data": JSON.stringify({"matricula":""+mat.value+"","nombre":""+nom.value+"","carrera":""+carr.value+""}),
+					};
+
+					$.ajax(settings).done(function (response) {
+					  console.log(response);
+					  alert("Se actualizo el alumno exitosamente");
+					});
+		  }	  
+	  });
+		  
+		  //METODO DELETE
+	  $("#eliminar").click(function(){
+		var matricula = $('input:text[name=matricula]').val();
+		if(matricula == ""){
+			alert("Debes capturar la matricula");
+		}else{
+			var settings = {
+					  "url": "http://localhost:8080/alumno/"+matricula,
+					  "method": "DELETE",
+					  "timeout": 0,
+					  "headers": {
+					    "Content-Type": "application/json"
+					  }
+					};
+
+					$.ajax(settings).done(function (response) {
+					  console.log(response);
+					  alert("Se elimino el alumno exitosamente");
+					});
+		}
+	  });
+		  
+	});
+	
+	
+	</script>
+</head>
 	<body>
-		Hola Spring Boot!
+	
+		<form>
+			<label>Matricula:</label><input type="text" name="matricula" id="matricula"><br>
+			<label>Nombre:</label><input type="text" name="nombre" id="nombre"><br>
+			<label>Carrera:</label><input type="text" name="carrera" id="carrera"><br>
+
+			<button type="button" id="ver">GET</button>
+			<button id="cargar">POST</button> 
+			<button id="actualizar">PUT</button>
+			<button type="button" id="eliminar">DELETE</button>
+			<br>
+			
+			<div id="contenido"></div>
+			
+		</form>
 	</body>
 </html>
