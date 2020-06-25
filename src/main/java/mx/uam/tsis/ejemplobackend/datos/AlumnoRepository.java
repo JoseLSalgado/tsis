@@ -30,7 +30,6 @@ public class AlumnoRepository {
 	
 	public Alumno findByMatricula(Integer matricula) {
 		return alumnoRepository.get(matricula);
-		alumnoRepository.ge
 	}
 	
 	public List <Alumno> find() {
