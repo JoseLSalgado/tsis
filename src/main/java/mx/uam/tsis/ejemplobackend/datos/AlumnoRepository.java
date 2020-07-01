@@ -1,27 +1,19 @@
 package mx.uam.tsis.ejemplobackend.datos;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.stereotype.Component;
-
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.repository.CrudRepository;
 import mx.uam.tsis.ejemplobackend.negocio.modelo.Alumno;
-import mx.uam.tsis.ejemplobackend.servicios.AlumnoController;
 
-@Component
-@Slf4j
-public class AlumnoRepository {
+public interface AlumnoRepository extends CrudRepository<Alumno, Integer>{
+	
+	
+}
+//@Component
+//@Slf4j
+/*public class AlumnoRepository {
 	// Mapeo para simular la "base de datos", recibe matricula(Integer) y objeto alumno 
 	private Map <Integer, Alumno> alumnoRepository = new HashMap <>();
 	
-	/**
-	 * Guarda en la BD
-	 * 
-	 * @param alumno
-	 */
+	
 	public Alumno save(Alumno nuevoAlumno) {
 		alumnoRepository.put(nuevoAlumno.getMatricula(), nuevoAlumno);
 		return nuevoAlumno;
@@ -45,3 +37,4 @@ public class AlumnoRepository {
 
 	}
 }
+*/
