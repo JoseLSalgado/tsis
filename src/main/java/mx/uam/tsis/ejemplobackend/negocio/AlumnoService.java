@@ -20,23 +20,6 @@ public class AlumnoService {
 	 * @param nuevoAlumno
 	 * @return el alumno que se acaba de crear si la creacion es exitosa, null de lo contrario
 	 */
-	/*public Alumno create(Alumno nuevoAlumno) {
-		
-		// Regla de negocio: No se puede crear más de un alumno con la misma matricula
-		Alumno alumno = alumnoRepository.findByMatricula(nuevoAlumno.getMatricula());
-		
-		if(alumno == null) {
-			
-			return alumnoRepository.save(nuevoAlumno);
-			
-		} else {
-			
-			return null;
-			
-		}
-		
-	}
-	*/
 	public Alumno create(Alumno nuevoAlumno) {
 		
 		// Regla de negocio: No se puede crear más de un alumno con la misma matricula
