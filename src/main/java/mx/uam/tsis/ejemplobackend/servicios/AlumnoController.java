@@ -30,7 +30,7 @@ import mx.uam.tsis.ejemplobackend.negocio.modelo.Alumno;
  *
  */
 @RestController
-@RequestMapping("/v1") //Es el versionamiento de la API
+//@RequestMapping("/v1") //Es el versionamiento de la API
 @Slf4j                 //Loggin, sirve para poner los mensajes de log.info() y poner las trazas
 public class AlumnoController {
 	

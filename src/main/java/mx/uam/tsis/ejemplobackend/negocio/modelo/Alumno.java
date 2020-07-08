@@ -11,6 +11,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Entidad Usuario
+ * @author Jose Luis Salgado M. 
+ *
+ */
+
 @NoArgsConstructor         //Constructor sin parametros
 @AllArgsConstructor        //Constructor con parametros
 @Builder
@@ -22,7 +28,7 @@ public class Alumno {
 	@Id //Indica a JPA(bd) que esté sera su id (llave primaria)
 	private Integer matricula;
 	
-	@NotBlank  //Valida al pasar por controllerRest que este campo no este vacio
+	@NotBlank  //Valida al pasar por controllerRest que esté campo no este vacio
 	@ApiModelProperty(notes="Nombre del alumno", required=true)
 	private String nombre;
 	
